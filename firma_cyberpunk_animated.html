@@ -5,31 +5,214 @@
     <meta charset="utf-8">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap');
+
+        /* ══════════════════════════════════════════
+           KEYFRAMES — Animaciones cyberpunk sutiles
+        ══════════════════════════════════════════ */
+
+        /* 1. Glitch en WILSON: shift horizontal + color */
+        @keyframes glitch {
+            0% {
+                text-shadow: -3px 0 rgba(210, 0, 60, 0.65), 3px 0 rgba(0, 190, 210, 0.65);
+                transform: translateX(0);
+            }
+
+            4% {
+                text-shadow: -5px 0 rgba(210, 0, 60, 0.8), 4px 0 rgba(0, 190, 210, 0.8);
+                transform: translateX(-2px);
+            }
+
+            5% {
+                text-shadow: 4px 0 rgba(210, 0, 60, 0.8), -5px 0 rgba(0, 190, 210, 0.8);
+                transform: translateX(2px);
+            }
+
+            6% {
+                text-shadow: -3px 0 rgba(210, 0, 60, 0.65), 3px 0 rgba(0, 190, 210, 0.65);
+                transform: translateX(0);
+            }
+
+            40% {
+                text-shadow: -3px 0 rgba(210, 0, 60, 0.65), 3px 0 rgba(0, 190, 210, 0.65);
+                transform: translateX(0);
+            }
+
+            41% {
+                text-shadow: -6px 0 rgba(210, 0, 60, 0.9), 2px 0 rgba(0, 190, 210, 0.5);
+                transform: translateX(-1px);
+                opacity: 0.8;
+            }
+
+            42% {
+                text-shadow: 3px 0 rgba(210, 0, 60, 0.5), -4px 0 rgba(0, 190, 210, 0.9);
+                transform: translateX(1px);
+                opacity: 1;
+            }
+
+            43% {
+                text-shadow: -3px 0 rgba(210, 0, 60, 0.65), 3px 0 rgba(0, 190, 210, 0.65);
+                transform: translateX(0);
+            }
+
+            100% {
+                text-shadow: -3px 0 rgba(210, 0, 60, 0.65), 3px 0 rgba(0, 190, 210, 0.65);
+                transform: translateX(0);
+            }
+        }
+
+        /* 2. Scanline sweep — línea horizontal que baja lentamente */
+        @keyframes scanline {
+            0% {
+                top: -10%;
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                top: 110%;
+                opacity: 0.7;
+            }
+        }
+
+        /* 3. Parpadeo del borde amarillo top/bottom */
+        @keyframes border-pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* 4. Blink de los nodos de estado */
+        @keyframes blink-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            45%,
+            55% {
+                opacity: 0;
+            }
+        }
+
+        /* 5. Fade + scale suave para el nombre WOLF */
+        @keyframes name-glow {
+
+            0%,
+            100% {
+                text-shadow: 0 0 0 rgba(10, 10, 10, 0);
+            }
+
+            50% {
+                text-shadow: 2px 2px 8px rgba(10, 10, 10, 0.25);
+            }
+        }
+
+        /* 6. Ticker de las barras de status */
+        @keyframes bar-signal {
+
+            0%,
+            100% {
+                width: 90%;
+            }
+
+            50% {
+                width: 78%;
+            }
+        }
+
+        @keyframes bar-uptime {
+
+            0%,
+            100% {
+                width: 75%;
+            }
+
+            50% {
+                width: 85%;
+            }
+        }
+
+        @keyframes bar-stack {
+
+            0%,
+            100% {
+                width: 60%;
+            }
+
+            50% {
+                width: 68%;
+            }
+        }
+
+        /* Clases que aplican las animaciones */
+        .anim-glitch {
+            animation: glitch 4s infinite;
+        }
+
+        .anim-wolf {
+            animation: name-glow 3s ease-in-out infinite;
+        }
+
+        .anim-blink {
+            animation: blink-dot 2s infinite;
+        }
+
+        .anim-blink-2 {
+            animation: blink-dot 2s infinite 0.6s;
+        }
+
+        .anim-blink-3 {
+            animation: blink-dot 2s infinite 1.1s;
+        }
+
+        .anim-bar-s {
+            animation: bar-signal 3s ease-in-out infinite;
+        }
+
+        .anim-bar-u {
+            animation: bar-uptime 4s ease-in-out infinite;
+        }
+
+        .anim-bar-k {
+            animation: bar-stack 5s ease-in-out infinite;
+        }
     </style>
 </head>
 
-<body style="margin:0; padding:0; background:#ffffff;">
-    <div style="width:100%;" spellcheck="false" translate="no">
+<body
+    style="margin:0; padding:20px; background:#e0e0e0; display:flex; justify-content:center; align-items:center; min-height:100vh; box-sizing:border-box;">
 
-        <!-- ═══════════════════════════════════════════════════════════
-     FIRMA CYBERPUNK v4 — WOLF WILSON
-     Paleta: #f0e800 (fondo amarillo) / #0a0a0a (negro detalles) / #1c1c2e (footer)
-     Estilo: HUD / Sci-Fi / Linework pesado — FONDO AMARILLO
-════════════════════════════════════════════════════════════ -->
+    <div style="position:relative; display:inline-block;">
 
-        <table width="600" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto; width:600px; background-color:#f0e800;
-           border:0;
-           font-family:'Orbitron','Arial Narrow',Arial,sans-serif;">
+        <!-- ══ SCANLINE sweep overlay ══ -->
+        <div style="position:absolute; left:0; width:100%; height:2px;
+        background:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.22) 50%, rgba(0,0,0,0.18) 70%, transparent 100%);
+        z-index:10; pointer-events:none;
+        animation: scanline 5s linear infinite;">
+        </div>
 
-            <!-- ═══ BORDE TOP: línea amarilla gruesa + tick marks ═══ -->
+        <!-- ══ TABLA PRINCIPAL ══ -->
+        <table width="600" align="center" cellpadding="0" cellspacing="0" border="0" style="width:600px; background-color:#f0e800; font-family:'Orbitron','Arial Narrow',Arial,sans-serif;
+               position:relative; overflow:hidden;">
+
+            <!-- Borde superior animado -->
             <tr>
                 <td style="padding:0; line-height:0; font-size:0;">
-                    <!-- Borde superior amarillo -->
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                            <td style="height:4px; background:#0a0a0a;"></td>
+                            <td style="height:4px; background:#0a0a0a; animation:border-pulse 3s ease-in-out infinite;">
+                            </td>
                         </tr>
-                        <!-- Ticks decorativos superiores -->
                         <tr>
                             <td style="background:#f0e800; padding:4px 0 0 0;">
                                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -44,10 +227,9 @@
                                             <div style="width:2px; height:6px; background:#0a0a0a; opacity:0.5;"></div>
                                         </td>
                                         <td></td>
-                                        <!-- Centro: Clasificación -->
                                         <td align="center" style="font-size:7px; color:#0a0a0a; letter-spacing:5px;
-                                    font-family:'Orbitron',Arial,sans-serif; font-weight:700; padding-top:1px;">
-                                            ▶ &nbsp; CLASS-LEVEL 39 // PERSONAL.ID &nbsp; ◀
+                                        font-family:'Orbitron',Arial,sans-serif; font-weight:700; padding-top:1px;">
+                                            ▶ &nbsp; LEVEL-39 // PERSONAL.ID &nbsp; ◀
                                         </td>
                                         <td></td>
                                         <td width="8" style="padding-right:4px;">
@@ -71,13 +253,13 @@
                 </td>
             </tr>
 
-            <!-- ═══ ZONA PRINCIPAL ═══ -->
+            <!-- ══ ZONA PRINCIPAL ══ -->
             <tr>
                 <td style="padding:16px 18px 12px 18px;">
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
 
-                            <!-- ▌▌▌ LATERAL IZQUIERDO — Tick stack decorativo ▌▌▌ -->
+                            <!-- Ticks laterales izquierdos -->
                             <td width="18" valign="middle" style="padding-right:10px;">
                                 <table cellpadding="0" cellspacing="3" border="0">
                                     <tr>
@@ -101,10 +283,10 @@
                                 </table>
                             </td>
 
-                            <!-- ▌▌▌ BLOQUE CENTRAL — nombre + datos ▌▌▌ -->
+                            <!-- ▌ BLOQUE CENTRAL ▌ -->
                             <td valign="top">
 
-                                <!-- Línea superior de la "tarjeta" con esquina recortada -->
+                                <!-- Línea superior tarjeta -->
                                 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom:0;">
                                     <tr>
                                         <td style="height:2px; background:#0a0a0a; width:40%;"></td>
@@ -113,131 +295,121 @@
                                     </tr>
                                 </table>
 
-                                <!-- Bloque principal con borde izquierdo + derecho -->
+                                <!-- Tarjeta interior -->
                                 <table cellpadding="0" cellspacing="0" border="0" width="100%"
                                     style="border-left:2px solid #0a0a0a; border-right:1px solid rgba(10,10,10,0.2);">
                                     <tr>
                                         <td style="padding:14px 16px 14px 16px;">
 
-                                            <!-- Etiqueta superior ghost -->
+                                            <!-- Label ghost -->
                                             <div style="font-size:7px; color:rgba(10,10,10,0.45); letter-spacing:5px;
-                                        font-family:'Orbitron',Arial,sans-serif; margin-bottom:4px;">
+                                            font-family:'Orbitron',Arial,sans-serif; margin-bottom:4px;">
                                                 // IDENTITY &nbsp;&nbsp; SCI-FI &nbsp;&nbsp; CYBERPUNK
                                             </div>
 
-                                            <!-- Nombre: WOLF con sombra ghost -->
+                                            <!-- WOLF con glow animado -->
                                             <div style="position:relative; line-height:1; margin-bottom:2px;">
-                                                <!-- Sombra / ghost -->
                                                 <div style="font-size:30px; font-weight:900; color:rgba(10,10,10,0.12);
-                                            letter-spacing:8px; font-family:'Orbitron',Arial,sans-serif;
-                                            position:absolute; top:2px; left:2px; white-space:nowrap;">
+                                                letter-spacing:8px; font-family:'Orbitron',Arial,sans-serif;
+                                                position:absolute; top:2px; left:2px; white-space:nowrap;">
                                                     WOLF
                                                 </div>
-                                                <!-- Texto principal -->
-                                                <div style="font-size:30px; font-weight:900; color:#0a0a0a;
-                                            letter-spacing:8px; font-family:'Orbitron',Arial,sans-serif;
-                                            position:relative;">
+                                                <div class="anim-wolf" style="font-size:30px; font-weight:900; color:#0a0a0a;
+                                                letter-spacing:8px; font-family:'Orbitron',Arial,sans-serif;
+                                                position:relative;">
                                                     WOLF
                                                 </div>
                                             </div>
 
-                                            <!-- WILSON glitch — aberración cromática (email-safe) -->
-                                            <div style="font-size:30px; font-weight:900; letter-spacing:8px;
-                                                font-family:'Orbitron',Arial,sans-serif;
-                                                color:#111111;
-                                                text-shadow: -3px 0 rgba(210,0,60,0.65), 3px 0 rgba(0,190,210,0.65);
-                                                line-height:1; margin-bottom:10px; opacity:0.75;">
+                                            <!-- WILSON con glitch animado -->
+                                            <div class="anim-glitch" style="font-size:30px; font-weight:900; letter-spacing:8px;
+                                            font-family:'Orbitron',Arial,sans-serif;
+                                            color:#111111;
+                                            text-shadow: -3px 0 rgba(210,0,60,0.65), 3px 0 rgba(0,190,210,0.65);
+                                            line-height:1; margin-bottom:10px; opacity:0.75;">
                                                 WILSON
                                             </div>
 
-                                            <!-- Rol: badge negro sobre amarillo -->
+                                            <!-- Badge rol -->
                                             <div style="margin-bottom:14px;">
-                                                <span style="background:#0a0a0a; padding:3px 10px 3px 10px;
-                                            font-size:8px; font-weight:700; color:#f0e800; letter-spacing:2px;
-                                            font-family:'Orbitron',Arial,sans-serif;">
+                                                <span style="background:#0a0a0a; padding:3px 10px;
+                                                font-size:8px; font-weight:700; color:#f0e800; letter-spacing:2px;
+                                                font-family:'Orbitron',Arial,sans-serif;">
                                                     FULL_STACK_PYTHON_DEV
                                                 </span>
                                             </div>
 
-                                            <!-- Separador HUD -->
+                                            <!-- Separador -->
                                             <table cellpadding="0" cellspacing="0" border="0"
                                                 style="width:100%; margin-bottom:12px;">
                                                 <tr>
-                                                    <td style="height:1px; background:#f0e800; width:25%;"></td>
-                                                    <td style="height:1px; background:rgba(240,232,0,0.3); width:8%;">
+                                                    <td style="height:1px; background:#0a0a0a; width:25%;"></td>
+                                                    <td style="height:1px; background:rgba(10,10,10,0.3); width:8%;">
                                                     </td>
-                                                    <td style="height:1px; background:rgba(240,232,0,0.1); width:12%;">
+                                                    <td style="height:1px; background:rgba(10,10,10,0.1); width:12%;">
                                                     </td>
-                                                    <td style="height:1px; background:rgba(240,232,0,0.04);"></td>
+                                                    <td style="height:1px; background:rgba(10,10,10,0.04);"></td>
                                                 </tr>
                                             </table>
 
                                             <!-- Contactos -->
                                             <table cellpadding="0" cellspacing="0" border="0"
                                                 style="width:100%; margin-bottom:14px;">
-
-                                                <!-- REPO -->
                                                 <tr>
                                                     <td valign="middle" width="10" style="padding:0 10px 6px 0;">
-                                                        <!-- Marcador cuadrado -->
-                                                        <div style="width:8px; height:8px; border:2px solid #0a0a0a;
-                                                    background:#0a0a0a;"></div>
+                                                        <div
+                                                            style="width:8px; height:8px; border:2px solid #0a0a0a; background:#0a0a0a;">
+                                                        </div>
                                                     </td>
                                                     <td valign="middle" width="52" style="padding:0 10px 6px 0;">
                                                         <span
                                                             style="font-size:8px; color:#0a0a0a; letter-spacing:2px;
-                                                    font-family:'Orbitron',Arial,sans-serif; font-weight:700;">REPO</span>
+                                                        font-family:'Orbitron',Arial,sans-serif; font-weight:700;">REPO</span>
                                                     </td>
-                                                    <td valign="middle" style="padding:0 0 6px 0;
-                                                border-bottom:1px solid rgba(10,10,10,0.2);">
+                                                    <td valign="middle"
+                                                        style="padding:0 0 6px 0; border-bottom:1px solid rgba(10,10,10,0.2);">
                                                         <a href="https://github.com/WolfWilson" target="_blank"
                                                             style="color:#0a0a0a; text-decoration:none; font-size:11px;
-                                                        letter-spacing:0.5px;
-                                                        font-family:'Rajdhani','Orbitron',Arial,sans-serif; font-weight:700;">
+                                                            font-family:'Rajdhani','Orbitron',Arial,sans-serif; font-weight:700;">
                                                             github.com/WolfWilson
                                                         </a>
                                                     </td>
                                                 </tr>
-
-                                                <!-- NET -->
                                                 <tr>
                                                     <td valign="middle" width="10" style="padding:6px 10px 0 0;">
-                                                        <div style="width:8px; height:8px; border:2px solid rgba(10,10,10,0.55);
-                                                    background:transparent;"></div>
+                                                        <div
+                                                            style="width:8px; height:8px; border:2px solid rgba(10,10,10,0.55); background:transparent;">
+                                                        </div>
                                                     </td>
                                                     <td valign="middle" width="52" style="padding:6px 10px 0 0;">
                                                         <span
                                                             style="font-size:8px; color:#0a0a0a; letter-spacing:2px;
-                                                    font-family:'Orbitron',Arial,sans-serif; font-weight:700;">NET</span>
+                                                        font-family:'Orbitron',Arial,sans-serif; font-weight:700;">NET</span>
                                                     </td>
                                                     <td valign="middle" style="padding:6px 0 0 0;">
                                                         <a href="http://www.dimensiondelterror.com.ar" target="_blank"
                                                             style="color:#0a0a0a; text-decoration:none; font-size:11px;
-                                                        letter-spacing:0.5px;
-                                                        font-family:'Rajdhani','Orbitron',Arial,sans-serif; font-weight:700;">
+                                                            font-family:'Rajdhani','Orbitron',Arial,sans-serif; font-weight:700;">
                                                             dimensiondelterror.com.ar
                                                         </a>
                                                     </td>
                                                 </tr>
-
                                             </table>
 
-                                            <!-- Quote / SYS MSG -->
+                                            <!-- SYS MSG -->
                                             <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
                                                 <tr>
-                                                    <!-- Línea de acento izquierda -->
-                                                    <td width="4" style="background:#f0e800; vertical-align:stretch;">
-                                                    </td>
-                                                    <td style="padding:8px 12px; background:rgba(240,232,0,0.05);
-                                                border-top:1px solid rgba(240,232,0,0.2);
-                                                border-bottom:1px solid rgba(240,232,0,0.2);
-                                                border-right:1px solid rgba(240,232,0,0.1);">
+                                                    <td width="4" style="background:#0a0a0a;"></td>
+                                                    <td style="padding:8px 12px; background:rgba(10,10,10,0.05);
+                                                    border-top:1px solid rgba(10,10,10,0.2);
+                                                    border-bottom:1px solid rgba(10,10,10,0.2);
+                                                    border-right:1px solid rgba(10,10,10,0.1);">
                                                         <div style="font-size:7px; color:rgba(10,10,10,0.45); letter-spacing:3px;
-                                                    font-family:'Orbitron',Arial,sans-serif; margin-bottom:4px;">◈
+                                                        font-family:'Orbitron',Arial,sans-serif; margin-bottom:4px;">◈
                                                             SYS.MSG</div>
                                                         <div
                                                             style="font-size:11px; color:#0a0a0a; font-style:italic;
-                                                    font-family:'Rajdhani',Arial,sans-serif; font-weight:500; letter-spacing:1px;">
+                                                        font-family:'Rajdhani',Arial,sans-serif; font-weight:500; letter-spacing:1px;">
                                                             "El Final es en Donde Partí"
                                                         </div>
                                                     </td>
@@ -248,35 +420,34 @@
                                     </tr>
                                 </table>
 
-                                <!-- Línea inferior de la tarjeta -->
+                                <!-- Línea inferior tarjeta -->
                                 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:0;">
                                     <tr>
-                                        <td style="height:2px; background:rgba(240,232,0,0.08);"></td>
-                                        <td style="height:2px; background:rgba(14, 13, 1, 0.123); width:10%;"></td>
-                                        <td style="height:2px; background:#f0e800; width:40%;"></td>
+                                        <td style="height:2px; background:rgba(10,10,10,0.08);"></td>
+                                        <td style="height:2px; background:rgba(10,10,10,0.35); width:10%;"></td>
+                                        <td style="height:2px; background:#0a0a0a; width:40%;"></td>
                                     </tr>
                                 </table>
 
                             </td>
 
-                            <!-- ▌▌▌ LATERAL DERECHO — ID + lines ▌▌▌ -->
+                            <!-- ▌ LATERAL DERECHO ▌ -->
                             <td width="110" valign="top" style="padding-left:14px;">
 
-                                <!-- HUD ornament: corner bracket top-right -->
+                                <!-- Corner bracket top -->
                                 <table cellpadding="0" cellspacing="0" border="0"
                                     style="width:100%; margin-bottom:10px;">
                                     <tr>
-                                        <!-- Vertical right edge -->
                                         <td align="right">
                                             <table cellpadding="0" cellspacing="0" border="0">
                                                 <tr>
                                                     <td></td>
-                                                    <td width="2" style="background:#f0e800; height:28px; width:2px;">
+                                                    <td width="2" style="background:#0a0a0a; height:28px; width:2px;">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td
-                                                        style="border-bottom:2px solid #f0e800; width:28px; height:2px; border-right:2px solid #f0e800;">
+                                                        style="border-bottom:2px solid #0a0a0a; width:28px; height:2px; border-right:2px solid #0a0a0a;">
                                                     </td>
                                                     <td></td>
                                                 </tr>
@@ -287,76 +458,78 @@
 
                                 <!-- ID Box -->
                                 <div style="border:1px solid rgba(10,10,10,0.4); background:rgba(10,10,10,0.08);
-                            padding:8px; text-align:center; margin-bottom:10px;">
+                                padding:8px; text-align:center; margin-bottom:10px;">
                                     <div style="font-size:6px; color:rgba(10,10,10,0.5); letter-spacing:2px;
-                                font-family:'Orbitron',Arial,sans-serif; margin-bottom:5px;">ENTITY.ID</div>
+                                    font-family:'Orbitron',Arial,sans-serif; margin-bottom:5px;">ENTITY.ID</div>
                                     <div style="font-size:14px; color:#0a0a0a; font-weight:700; letter-spacing:3px;
-                                font-family:'Orbitron',Arial,sans-serif;">198616</div>
+                                    font-family:'Orbitron',Arial,sans-serif;">W198616</div>
                                 </div>
 
-                                <!-- Status mini-bars -->
-                                <div style="margin-bottom:5px;">
+                                <!-- Status bars animadas -->
+                                <div>
                                     <div style="font-size:6px; color:rgba(10,10,10,0.45); letter-spacing:2px;
-                                font-family:'Orbitron',Arial,sans-serif; margin-bottom:5px;">STATUS</div>
+                                    font-family:'Orbitron',Arial,sans-serif; margin-bottom:5px;">STATUS</div>
 
-                                    <!-- Bar 1 -->
                                     <div style="font-size:6px; color:rgba(10,10,10,0.5); letter-spacing:1px;
-                                font-family:'Orbitron',Arial,sans-serif; margin-bottom:3px;">SIGNAL</div>
+                                    font-family:'Orbitron',Arial,sans-serif; margin-bottom:3px;">SIGNAL</div>
                                     <table cellpadding="0" cellspacing="0" border="0"
                                         style="width:100%; margin-bottom:7px;">
                                         <tr>
-                                            <td style="height:3px; background:#0a0a0a; width:90%;"></td>
+                                            <td class="anim-bar-s" style="height:3px; background:#0a0a0a; width:90%;">
+                                            </td>
                                             <td style="height:3px; background:rgba(10,10,10,0.15);"></td>
                                         </tr>
                                     </table>
 
-                                    <!-- Bar 2 -->
                                     <div style="font-size:6px; color:rgba(10,10,10,0.5); letter-spacing:1px;
-                                font-family:'Orbitron',Arial,sans-serif; margin-bottom:3px;">UPTIME</div>
+                                    font-family:'Orbitron',Arial,sans-serif; margin-bottom:3px;">UPTIME</div>
                                     <table cellpadding="0" cellspacing="0" border="0"
                                         style="width:100%; margin-bottom:7px;">
                                         <tr>
-                                            <td style="height:3px; background:#0a0a0a; width:75%;"></td>
+                                            <td class="anim-bar-u" style="height:3px; background:#0a0a0a; width:75%;">
+                                            </td>
                                             <td style="height:3px; background:rgba(10,10,10,0.15);"></td>
                                         </tr>
                                     </table>
 
-                                    <!-- Bar 3 -->
                                     <div style="font-size:6px; color:rgba(10,10,10,0.5); letter-spacing:1px;
-                                font-family:'Orbitron',Arial,sans-serif; margin-bottom:3px;">STACK</div>
+                                    font-family:'Orbitron',Arial,sans-serif; margin-bottom:3px;">STACK</div>
                                     <table cellpadding="0" cellspacing="0" border="0"
                                         style="width:100%; margin-bottom:10px;">
                                         <tr>
-                                            <td style="height:3px; background:#0a0a0a; width:60%;"></td>
+                                            <td class="anim-bar-k" style="height:3px; background:#0a0a0a; width:60%;">
+                                            </td>
                                             <td style="height:3px; background:rgba(10,10,10,0.15);"></td>
                                         </tr>
                                     </table>
                                 </div>
 
-                                <!-- Nodos decorativos -->
+                                <!-- Nodos parpadeantes -->
                                 <table cellpadding="0" cellspacing="2" border="0" style="width:100%;">
                                     <tr>
                                         <td style="font-size:7px; color:rgba(10,10,10,0.55); letter-spacing:1px;
-                                    font-family:'Orbitron',Arial,sans-serif; line-height:2;">
-                                            ▸ NODE.42<br>▸ AUTH.OK<br>▸ SEC.L7
+                                        font-family:'Orbitron',Arial,sans-serif; line-height:2.2;">
+                                            <span class="anim-blink">▸</span> NODE.42<br>
+                                            <span class="anim-blink-2">▸</span> AUTH.OK<br>
+                                            <span class="anim-blink-3">▸</span> SEC.L7
                                         </td>
                                     </tr>
                                 </table>
 
-                                <!-- Corner bracket bottom-right -->
+                                <!-- Corner bracket bottom -->
                                 <table cellpadding="0" cellspacing="0" border="0" style="width:100%; margin-top:10px;">
                                     <tr>
                                         <td align="right">
                                             <table cellpadding="0" cellspacing="0" border="0">
                                                 <tr>
                                                     <td
-                                                        style="border-top:2px solid #f0e800; width:28px; height:2px; border-right:2px solid #f0e800;">
+                                                        style="border-top:2px solid #0a0a0a; width:28px; height:2px; border-right:2px solid #0a0a0a;">
                                                     </td>
                                                     <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td></td>
-                                                    <td width="2" style="background:#f0e800; height:28px; width:2px;">
+                                                    <td width="2" style="background:#0a0a0a; height:28px; width:2px;">
                                                     </td>
                                                 </tr>
                                             </table>
@@ -371,54 +544,53 @@
                 </td>
             </tr>
 
-            <!-- ═══ FRANJA DIAGONAL (señalización industrial) ═══ -->
+            <!-- ══ FRANJA DIAGONAL ══ -->
             <tr>
                 <td style="padding:0; line-height:0; font-size:0; height:10px;
-            background:repeating-linear-gradient(
-                -55deg,
-                #0a0a0a     0px, #0a0a0a     5px,
-                transparent 5px, transparent 12px
-            );">
+                background:repeating-linear-gradient(
+                    -55deg,
+                    #0a0a0a 0px, #0a0a0a 5px,
+                    transparent 5px, transparent 12px
+                );">
                 </td>
             </tr>
 
-            <!-- ═══ FOOTER STATUS ═══ -->
+            <!-- ══ FOOTER ══ -->
             <tr>
-                <td style="background:#151524; padding:0; border-top:0;">
+                <td style="background:#151524; padding:0;">
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                            <!-- Tick izquierdo -->
                             <td width="4" style="background:#0a0a0a;"></td>
                             <td style="padding:7px 14px;">
                                 <span style="font-size:7px; color:rgba(240,232,0,0.25); letter-spacing:3px;
-                            font-family:'Orbitron',Arial,sans-serif;">
+                                font-family:'Orbitron',Arial,sans-serif;">
                                     ▋▋▋▋▋▋▋▋▋▋▋▋
                                 </span>
                             </td>
                             <td align="center" style="padding:7px 0;">
                                 <span style="font-size:7px; color:rgba(240,232,0,0.45); letter-spacing:2px;
-                            font-family:'Orbitron',Arial,sans-serif;">
-                                    ◼ ENC.ON &nbsp;·&nbsp; ◼ VPN.ACT &nbsp;·&nbsp; ◼ NODE.42
+                                font-family:'Orbitron',Arial,sans-serif;">
+                                    <span class="anim-blink">◼</span> ENC.ON &nbsp;·&nbsp;
+                                    <span class="anim-blink-2">◼</span> VPN.ACT &nbsp;·&nbsp;
+                                    <span class="anim-blink-3">◼</span> NODE.42
                                 </span>
                             </td>
                             <td align="right" style="padding:7px 14px;">
                                 <span style="font-size:7px; color:#f0e800; letter-spacing:2px;
-                            font-family:'Orbitron',Arial,sans-serif; font-weight:700;">
+                                font-family:'Orbitron',Arial,sans-serif; font-weight:700;">
                                     INSSSEP // DATA.SYS
                                 </span>
                             </td>
-                            <!-- Tick derecho -->
                             <td width="4" style="background:rgba(240,232,0,0.5);"></td>
                         </tr>
                     </table>
                 </td>
             </tr>
 
-            <!-- ═══ BORDE BOTTOM: línea delgada + ticks ═══ -->
+            <!-- ══ BORDE BOTTOM ══ -->
             <tr>
                 <td style="padding:0; line-height:0; font-size:0;">
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <!-- Ticks decorativos inferiores -->
                         <tr>
                             <td style="background:#1c1c2e; padding:0 0 4px 0;">
                                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -452,8 +624,8 @@
             </tr>
 
         </table>
-
     </div>
+
 </body>
 
 </html>
